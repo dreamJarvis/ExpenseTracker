@@ -17,18 +17,22 @@
     <div class="container mt-3" style="width: 60%; text-align: center;">
         <h1><span class="badge bg-primary text-white">Expense Tracker</span></h1>
     </div>
-    <div class="container mb-5" id="box-1">
+    <div class="container mb-5 bg-white" id="box-1">
         <div class="container" id="itemInfo" style="width: 60%; padding-top: 10px;">
             <div class="row">
                 <div class="mb-3 col-md">
                     <label for="item" class="form-label"><b>Item</b></label>
                     <input type="text" class="form-control" id="item" placeholder="item name">
                 </div>
+                <div class="mb-3 col-md">
+                    <label for="totalIterations" class="form-label"><b>Repetitions</b></label>
+                    <input type="number" class="form-control" id="totalIterations" placeholder="total number of items">
+                </div>
             </div>
             <div class="row">
                 <div class="mb-3 col-md">
                     <label for="amount" class="form-label"><b>Amount</b></label>
-                    <input type="text" class="form-control" id="amount" placeholder="cost">
+                    <input type="number" class="form-control" id="amount" placeholder="cost">
                 </div>
                 <div class="mb-3 col-md">
                     <label for="purchaseDate" class="form-label"><b>Date</b></label>
@@ -44,13 +48,14 @@
     </div>
     <hr>
 
-    <div class="container mt-5" id="box-2" style="width: 70%; ">
+    <div class="container mt-5" id="box-2" style="width: 80%; ">
         <table class="table table-dark text-center ">
             <thead>
                 <tr>
                     <th scope="col ">Item</th>
-                    <th scope="col ">Cost</th>
                     <th scope="col ">Date</th>
+                    <th scope="col ">Cost / piece</th>
+                    <th scope="col ">Itr</th>
                     <th scope="col "></th>
                 </tr>
             </thead>

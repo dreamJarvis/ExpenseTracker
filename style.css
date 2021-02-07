@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
 #box-1 {
     width: 50%;
     border: 3px solid rgb(145, 255, 145);

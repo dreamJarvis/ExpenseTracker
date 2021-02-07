@@ -7,10 +7,11 @@ let totalCount = 0;
 let totalAmt = 0;
 
 class Item {
-    constructor(name, cost, date) {
+    constructor(name, cost, date, iterations) {
         this.name = name;
         this.cost = cost;
         this.date = date;
+        this.iterations = iterations;
     }
 };
 
@@ -27,13 +28,14 @@ class UI {
         newElement.innerHTML =
             `
         <td>${item.name}</td>
-        <td>${item.cost}</td>
         <td>${item.date}</td>
+        <td>${item.cost}</td>
+        <td>${item.iterations}</td>
         <td><button type="button" class="btn btn-sm btn-danger delete">X</button></td> </td>
         `;
 
         totalCount++;
-        totalAmt += parseInt(item.cost);
+        totalAmt += item.iterations * (parseInt(item.cost));
         itemList.appendChild(newElement);
         UI.displayTotal();
     }
@@ -51,6 +53,7 @@ class UI {
         document.querySelector('#item').value = "";
         document.querySelector('#amount').value = "";
         document.querySelector('#purchaseDate').value = "";
+        document.querySelector('#totalIterations').value = "";
     }
 
     static displayTotal() {
@@ -76,6 +79,16 @@ class store {
 
     static addItemToStorage(item) {
         let items = store.getItemfromStorage();
+
+        // // checks if the item already exists in the list
+        // let flag = false;
+        // items.forEach((ele, index) => {
+        //     if (ele.name === item.name) {
+        //         ele.iterations += item.iterations;
+        //         flag = true;
+        //     }
+        // });
+
         items.push(item);
         localStorage.setItem('items', JSON.stringify(items));
     }
@@ -99,11 +112,12 @@ addItemButton.addEventListener('click', (e) => {
     const item = document.querySelector('#item');
     const amount = document.querySelector('#amount');
     const purchaseDate = document.querySelector('#purchaseDate');
+    const totalIterations = document.querySelector('#totalIterations');
 
     if (item.value === "" || amount.value === "" || purchaseDate.value === "") {
         alert("Fill all values !");
     } else {
-        const newItem = new Item(item.value, amount.value, purchaseDate.value);
+        const newItem = new Item(item.value, amount.value, purchaseDate.value, totalIterations.value);
         UI.addItemInfo(newItem);
         store.addItemToStorage(newItem);
         UI.clearFields();
@@ -114,12 +128,14 @@ itemList.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete')) {
         UI.removeItem(e.target);
 
-        const date = e.target.parentElement.previousElementSibling.textContent;
+        const totalItr = e.target.parentElement.previousElementSibling.textContent;
         const amount = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
-        const itemName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        const delItem = new Item(itemName, amount, date);
+        const date = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        const itemName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        const delItem = new Item(itemName, date, amount, totalItr);
+        console.log(delItem);
         store.deleteItemFromStorage(delItem);
     }
 });
 
-console.log(totalAmt, totalCount);
+// console.log(totalAmt, totalCount);
