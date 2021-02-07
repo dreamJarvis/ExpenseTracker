@@ -1,0 +1,10 @@
+#box-1 {
+    width: 50%;
+    border: 3px solid rgb(145, 255, 145);
+    border-radius: 5px;
+}
+
+#box-2 {
+    height: 270px;
+    overflow-y: auto;
+}
