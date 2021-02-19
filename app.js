@@ -7,10 +7,10 @@ let totalCount = 0;
 let totalAmt = 0;
 
 class Item {
-    constructor(name, cost, date, iterations) {
+    constructor(name, date, cost, iterations) {
         this.name = name;
-        this.cost = cost;
         this.date = date;
+        this.cost = cost;
         this.iterations = iterations;
     }
 };
@@ -79,16 +79,6 @@ class store {
 
     static addItemToStorage(item) {
         let items = store.getItemfromStorage();
-
-        // // checks if the item already exists in the list
-        // let flag = false;
-        // items.forEach((ele, index) => {
-        //     if (ele.name === item.name) {
-        //         ele.iterations += item.iterations;
-        //         flag = true;
-        //     }
-        // });
-
         items.push(item);
         localStorage.setItem('items', JSON.stringify(items));
     }
@@ -96,9 +86,11 @@ class store {
     static deleteItemFromStorage(item) {
         let items = store.getItemfromStorage();
         items.forEach((ele, index) => {
-            if (item.name === ele.name && item.cost === ele.cost && item.date === ele.date) {
+            if (item.name == ele.name && item.date == ele.date) {
+                console.log(ele.name);
                 items.splice(index, 1);
             }
+            console.log(ele.name, ele.date);
         });
 
         localStorage.setItem('items', JSON.stringify(items));
@@ -108,7 +100,6 @@ class store {
 document.addEventListener('DOMContentLoaded', UI.displayItems());
 
 addItemButton.addEventListener('click', (e) => {
-    // e.preventDefault();
     const item = document.querySelector('#item');
     const amount = document.querySelector('#amount');
     const purchaseDate = document.querySelector('#purchaseDate');
@@ -117,7 +108,7 @@ addItemButton.addEventListener('click', (e) => {
     if (item.value === "" || amount.value === "" || purchaseDate.value === "") {
         alert("Fill all values !");
     } else {
-        const newItem = new Item(item.value, amount.value, purchaseDate.value, totalIterations.value);
+        const newItem = new Item(item.value, purchaseDate.value, amount.value, totalIterations.value);
         UI.addItemInfo(newItem);
         store.addItemToStorage(newItem);
         UI.clearFields();
@@ -133,7 +124,6 @@ itemList.addEventListener('click', (e) => {
         const date = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         const itemName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
         const delItem = new Item(itemName, date, amount, totalItr);
-        console.log(delItem);
         store.deleteItemFromStorage(delItem);
     }
 });

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
@@ -14,12 +16,19 @@
 </head>
 
 <body>
-    <div class="container mt-3" style="width: 60%; text-align: center;">
-        <h1><span class="badge bg-primary text-white">Expense Tracker</span></h1>
+    <!-- heading -->
+    <div class="container mt-3 mb-3" id="heading">
+        <h1>
+            <span class="badge bg-primary text-white"><i class="fas fa-rupee-sign"></i> Expense Tracker</span>
+        </h1>
+        <!-- <h1 class="text-center mt-1 mb-4">
+            <span class="badge bg-primary text-white"><i class="fas fa-rupee-sign"></i></span> <span class="text-primary">Expense</span> Tracker
+        </h1> -->
     </div>
+
     <div class="container mb-5 bg-white" id="box-1">
         <div class="container" id="itemInfo" style="width: 60%; padding-top: 10px;">
-            <div class="row">
+            <div class="row mt-1">
                 <div class="mb-3 col-md">
                     <label for="item" class="form-label"><b>Item</b></label>
                     <input type="text" class="form-control" id="item" placeholder="item name">
@@ -64,7 +73,7 @@
         </table>
     </div>
 
-    <div class="container mt-5" id="box-3" style="width: 70%;">
+    <div class="container mt-3" id="box-3" style="width: 70%;">
         <table class="table table-dark table-striped text-center">
             <thead>
                 <tr>
