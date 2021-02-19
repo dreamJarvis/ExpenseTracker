@@ -44,8 +44,10 @@ class UI {
         item.parentElement.parentElement.remove();
 
         const cost = parseInt(item.parentElement.previousElementSibling.previousElementSibling.textContent);
+        const itr = parseInt(item.parentElement.previousElementSibling.textContent);
+
         totalCount--;
-        totalAmt -= cost;
+        totalAmt -= cost * itr;
         UI.displayTotal();
     }
 
